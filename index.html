@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Geek Room KRMU</title>
+  <style>
+    :root {
+      --red: #d62828;
+      --blue: #003566;
+      --card-bg: #fff;
+      --text: #222;
+      --radius: 12px;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f6f7fa;
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: linear-gradient(90deg, var(--red), var(--blue));
+      color: #fff;
+      padding: 1.6rem 2rem 2.4rem 2rem;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2.3rem;
+      margin: 0 0 0.6rem 0;
+      font-weight: bold;
+    }
+    header p {
+      max-width: 730px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+    }
+
+    .section {
+      max-width: 1024px;
+      margin: 2.2rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .center-title {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 1.2rem;
+      color: var(--blue);
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    .card {
+      flex: 1 1 220px;
+      max-width: 260px;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+      padding: 1.2rem 1rem;
+      text-align: center;
+      transition: transform 0.2s;
+      min-width: 210px;
+    }
+    .card:hover {
+      transform: translateY(-4px) scale(1.04);
+    }
+    .card h3 {
+      color: var(--red);
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    .card p {
+      font-size: 1rem;
+      margin: 0.1rem 0;
+      color: #444;
+    }
+    .join-section {
+      text-align: center;
+      margin-top: 2rem;
+    }
+    .join-section .btn {
+      background: var(--red);
+      color: #fff;
+      padding: 0.9rem 2.5rem;
+      border: none;
+      border-radius: var(--radius);
+      font-size: 1.08rem;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+      margin-top: 0.7rem;
+      display: inline-block;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .join-section .btn:hover {
+      background: var(--blue);
+    }
+
+    .team-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      justify-content: center;
+    }
+    .team-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+      padding: 1rem .7rem 1.3rem .7rem;
+      min-width: 190px;
+      max-width: 210px;
+      text-align: center;
+      flex: 1 1 180px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 0.3rem;
+    }
+    .team-pic {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 0.7rem;
+      border: 2.5px solid var(--blue);
+    }
+    .team-card h4 {
+      font-size: 1rem;
+      margin: 0.1rem 0 0.2rem 0;
+      color: var(--blue);
+    }
+    .team-role {
+      font-size: 0.98rem;
+      color: var(--red);
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    .links {
+      margin: 0.2rem 0 0 0;
+      display: flex;
+      gap: 0.7rem;
+      justify-content: center;
+    }
+    .links a {
+      color: #444;
+      font-size: 1.32rem;
+      transition: color 0.2s;
+    }
+    .links a:hover {
+      color: var(--blue);
+    }
+    @media (max-width: 900px){
+      .cards,
+      .team-grid {
+        gap: 1.5rem;
+      }
+    }
+    @media (max-width: 750px){
+      header h1{font-size:2rem;}
+      .section{padding:0 0.3rem;}
+      .card, .team-card{
+        min-width: 95vw;
+        max-width: 97vw;
+      }
+      .cards,
+      .team-grid {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+      }
+    }
+    @media (max-width:420px){
+      header{padding:1rem 0.2rem 1.7rem 0.2rem;}
+    }
+  </style>
+  <!-- Font Awesome for social icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+
+  <header>
+    <h1>Geek Room KRMU</h1>
+    <p>
+      Geek Room is a nationwide coding community with 75,000+ coders. We host hackathons, share coding opportunities, and help students find mentorship & like-minded friends.
+    </p>
+  </header>
+
+  <div class="section">
+    <div class="center-title">What We Do</div>
+    <div class="cards">
+      <div class="card">
+        <h3>Hackathons</h3>
+        <p>Team up and build cool projects</p>
+      </div>
+      <div class="card">
+        <h3>Workshops</h3>
+        <p>Learn new tech & coding skills</p>
+      </div>
+      <div class="card">
+        <h3>Competitions</h3>
+        <p>Sharpen your coding edge</p>
+      </div>
+      <div class="card">
+        <h3>Opportunities</h3>
+        <p>Find internships & jobs</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="join-section">
+    <div class="center-title" style="font-size:1.5rem;color:var(--red)">Join Us</div>
+    <p>Become part of our KRMU chapter community!</p>
+    <a class="btn" href="https://chat.whatsapp.com/Jtj4Txq5Bho4Ywb11gny5s" target="_blank" rel="noopener">
+      Join Now
+    </a>
+  </div>
+
+  <div class="section">
+    <div class="center-title">Our Team</div>
+    <div class="team-grid">
+
+      <!-- Chapter President -->
+      <div class="team-card">
+        <img class="team-pic" src="https://randomuser.me/api/portraits/men/1.jpg" alt="Aditey Mehra photo">
+        <h4>Aditey Mehra</h4>
+        <p class="team-role">Chapter President</p>
+        <div class="links">
+          <a href="#" title="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="#" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+      <!-- Team Members (confirmed) -->
+      <div class="team-card">
+        <img class="team-pic" src="https://randomuser.me/api/portraits/men/2.jpg" alt="Caleb Chandrasekar photo">
+        <h4>Caleb Chandrasekar</h4>
+        <p class="team-role">Web Dev</p>
+        <div class="links">
+          <a href="#" title="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="#" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+      <div class="team-card">
+        <img class="team-pic" src="https://randomuser.me/api/portraits/women/3.jpg" alt="Aarushi photo">
+        <h4>Aarushi</h4>
+        <p class="team-role">Web Dev</p>
+        <div class="links">
+          <a href="#" title="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="#" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+      <div class="team-card">
+        <img class="team-pic" src="https://randomuser.me/api/portraits/men/4.jpg" alt="Chirag Bhal photo">
+        <h4>Chirag Bhal</h4>
+        <p class="team-role">Emerging Tech</p>
+        <div class="links">
+          <a href="#" title="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="#" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+      <div class="team-card">
+        <img class="team-pic" src="https://randomuser.me/api/portraits/men/5.jpg" alt="Suyash Sahu photo">
+        <h4>Suyash Sahu</h4>
+        <p class="team-role">DSA/Web Dev</p>
+        <div class="links">
+          <a href="#" title="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="#" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+      <div class="team-card">
+        <img class="team-pic" src="https://randomuser.me/api/portraits/men/6.jpg" alt="Sarvesh Chandran photo">
+        <h4>Sarvesh Chandran</h4>
+        <p class="team-role">DSA</p>
+        <div class="links">
+          <a href="#" title="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="#" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+      <div class="team-card">
+        <img class="team-pic" src="https://randomuser.me/api/portraits/men/7.jpg" alt="Dewansh Shekhar Singh photo">
+        <h4>Dewansh Shekhar Singh</h4>
+        <p class="team-role">PR/Sponsorship</p>
+        <div class="links">
+          <a href="#" title="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="#" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+      <div class="team-card">
+        <img class="team-pic" src="https://randomuser.me/api/portraits/women/8.jpg" alt="Uma Mishra photo">
+        <h4>Uma Mishra</h4>
+        <p class="team-role">Publicity & Design</p>
+        <div class="links">
+          <a href="#" title="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="#" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+      <div class="team-card">
+        <img class="team-pic" src="https://randomuser.me/api/portraits/women/9.jpg" alt="Kinjal photo">
+        <h4>Kinjal</h4>
+        <p class="team-role">Publicity & Design</p>
+        <div class="links">
+          <a href="#" title="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="#" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+      <div class="team-card">
+        <img class="team-pic" src="https://randomuser.me/api/portraits/men/10.jpg" alt="Abhinav photo">
+        <h4>Abhinav</h4>
+        <p class="team-role">AI-ML</p>
+        <div class="links">
+          <a href="#" title="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="#" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+      <div class="team-card">
+        <img class="team-pic" src="https://randomuser.me/api/portraits/women/11.jpg" alt="Tanushree photo">
+        <h4>Tanushree</h4>
+        <p class="team-role">UI/UX</p>
+        <div class="links">
+          <a href="#" title="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="#" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+      <div class="team-card">
+        <img class="team-pic" src="https://randomuser.me/api/portraits/women/12.jpg" alt="Shreya photo">
+        <h4>Shreya</h4>
+        <p class="team-role">UI/UX</p>
+        <div class="links">
+          <a href="#" title="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="#" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+      <div class="team-card">
+        <img class="team-pic" src="https://randomuser.me/api/portraits/women/13.jpg" alt="Sire Saini photo">
+        <h4>Sire Saini</h4>
+        <p class="team-role">App Dev</p>
+        <div class="links">
+          <a href="#" title="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="#" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer style="background:var(--blue);color:#fff;text-align:center;padding:1rem 0 0.3rem 0;margin-top:2.2rem;font-size:.98rem;">
+    © 2025 Geek Room KRMU
+  </footer>
+
+</body>
+</html>
