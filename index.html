@@ -1,436 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Geek Room KRMU</title>
-  <style>
-    :root {
-      --red: #d62828;
-      --blue: #003566;
-      --card-bg: #fff;
-      --text: #222;
-      --radius: 18px;
-      --shadow: 0 2px 12px rgba(0,0,0,.07);
-    }
-    body {
-  font-family: 'Segoe UI', sans-serif;
-  background: #f6f7fa;
-  color: var(--text);
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-    }
-    header {
-      background: linear-gradient(90deg, var(--red), var(--blue));
-      color: #fff;
-      padding: 2.8rem 0 2.6rem 0;
-      text-align: center;
-    }
-    header h1 {
-      font-size: 2.6rem;
-      font-weight: 700;
-      margin-bottom: .7rem;
-      letter-spacing: .5px;
-    }
-    header p {
-      max-width: 730px;
-      margin: 0 auto;
-      font-size: 1.22rem;
-      font-weight: 400;
-      letter-spacing: .02em;
-      line-height: 1.5;
-    }
-    .intro-section {
-      max-width: 1070px;
-      margin: 2.2rem auto 2rem auto;
-      padding: 2rem 2.2rem;
-      background: #fff;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      text-align: center;
-    }
-    .intro-section h2 {
-      color: var(--red);
-      margin-bottom: 0.5rem;
-      font-size: 1.5rem;
-    }
-    .intro-section p {
-      font-size: 1.09rem;
-      color: #333;
-      margin: 0.5rem 0 0.5rem 0;
-      line-height: 1.65;
-    }
-    .intro-info-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
-      gap: 1.1rem;
-      margin: 1.3rem 0 1.1rem 0;
-      width: 100%;
-    }
-    .intro-box {
-  background: #f7f8fc;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-  padding: 1.06rem 1.1rem;
-  font-size: 1rem;
-  min-width: 0;
-  max-width: 100%;
-  width: 100%;
-  color: var(--blue);
-  font-weight: 500;
-  border: 1px solid #ededed;
-  box-sizing: border-box;
-    }
-    .intro-box b { color: var(--red);}
-    .section {
-      max-width: 1100px;
-      margin: 2.4rem auto 0 auto;
-      padding: 0 1.5rem;
-    }
-    .center-title {
-      text-align: center;
-      font-size: 2.15rem;
-      margin-bottom: 1.6rem;
-      color: var(--blue);
-      font-weight: 600;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Geek Room KRMU</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
 
-    /* --- WHAT WE DO grid --- */
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      justify-items: center;
-      margin-bottom: 2.2rem;
-    }
-    .card {
-  background: var(--card-bg);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 2.2rem 1.1rem 1.5rem 1.1rem;
-  text-align: center;
-  width: 100%;
-  min-width: 0;
-  max-width: 330px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  transition: transform 0.19s cubic-bezier(.68,-0.55,.27,1.55), box-shadow 0.18s;
-    }
-    .card:hover {
-      transform: translateY(-6px) scale(1.035);
-      box-shadow: 0 7px 28px rgba(0,0,0,0.11);
-    }
-    .card h3 {
-      color: var(--red);
-      font-size: 1.28rem;
-      font-weight: 700;
-      margin-bottom: 0.7rem;
-    }
-    .card p {
-      font-size: 1.11rem;
-      margin: 0;
-      color: #444;
-      font-weight: 500;
-    }
-    /* --- JOIN US --- */
-    .join-section {
-      text-align: center;
-      margin: 2.8rem 0 1.9rem 0;
-    }
-    .join-section .center-title {
-      font-size: 1.5rem;
-      color: var(--red);
-      margin-bottom: .6rem;
-    }
-    .join-section .btn {
-      background: var(--red);
-      color: #fff;
-      padding: 1.05rem 2.7rem;
-      border: none;
-      border-radius: var(--radius);
-      font-size: 1.12rem;
-      font-weight: bold;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background 0.2s;
-      margin-top: 1.1rem;
-      display: inline-block;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.11);
-    }
-    .join-section .btn:hover {
-      background: var(--blue);
-    }
-    /* --- OUR TEAM --- */
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 2.1rem;
-      justify-items: center;
-      margin-top: 1rem;
-      margin-bottom: 2.7rem;
-    }
-    .team-card {
-  background: var(--card-bg);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 2.1rem 1.2rem 1.3rem 1.2rem;
-  max-width: 290px;
-  width: 100%;
-  min-width: 0;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 0.2rem;
-  transition: transform .18s cubic-bezier(.68,-0.55,.27,1.55), box-shadow 0.18s;
-    }
-    .team-card:hover {
-      transform: translateY(-7px) scale(1.035);
-      box-shadow: 0 5px 28px rgba(0,0,0,0.17);
-    }
-    .team-pic {
-      width: 82px;
-      height: 82px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 0.74rem;
-      border: 3px solid var(--blue);
-      background: #ebedf3;
-    }
-    .team-card h4 {
-      font-size: 1.05rem;
-      margin: 0.1rem 0 0.2rem 0;
-      color: var(--blue);
-      font-weight: bold;
-      letter-spacing: .05em;
-    }
-    .team-role {
-      font-size: 1.03rem;
-      color: var(--red);
-      margin-bottom: 0.4rem;
-      font-weight: 600;
-    }
-    .links {
-      margin: 0.3rem 0 0 0;
-      display: flex;
-      gap: 0.82rem;
-      justify-content: center;
-    }
-    .links a {
-      color: #444;
-      font-size: 1.46rem;
-      transition: color 0.2s;
-    }
-    .links a:hover {
-      color: var(--blue);
-    }
-    @media (max-width: 900px) {
-      .cards, .team-grid, .intro-info-grid { gap: 1.4rem; }
-      .center-title { font-size:1.42rem; }
-    }
-    @media (max-width: 750px) {
-      header h1 { font-size:2rem; }
-      .intro-section { padding: 1.3rem 0.4rem; }
-      .section { padding:0 0.3rem;}
-      .cards, .team-grid, .intro-info-grid { grid-template-columns: 1fr; }
-      .card, .team-card, .intro-box {
-        max-width: 100%;
-        width: 100%;
-      }
-      .card, .team-card { padding: 1.25rem 0.5rem;}
-      .team-pic { width:66px; height:66px; }
-    }
-    @media (max-width:420px) {
-      header { padding:1.2rem 0.1rem 1.5rem 0.1rem;}
-      .center-title { font-size:1.11rem; }
-      .team-card, .card { padding: 1rem 0.3rem;}
-    }
-  </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        // Custom Tailwind theme configuration
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'geek-red': '#d62828',
+                        'geek-blue': '#003566',
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        /* A little extra CSS for the gradient header */
+        .header-gradient {
+            background: linear-gradient(90deg, #d62828, #003566);
+        }
+    </style>
 </head>
-<body>
-  <header>
-    <h1>Geek Room KRMU</h1>
-    <p>
-      Geek Room is a nationwide coding community with 75,000+ coders. We host hackathons, share coding opportunities, and help students find mentorship & like-minded friends.
-    </p>
-  </header>
+<body class="bg-gray-50 font-sans text-gray-800">
 
-  <div class="intro-section">
-    <h2>About Geek Room KRMU</h2>
-    <p>
-      Geek Room KRMU is the official chapter of Geek Room at KR Mangalam University. We're part of India's largest student-led coding network, started by three passionate coders who wanted an open, transparent community focused on sharing ideas and helping others.
-    </p>
-    <div class="intro-info-grid">
-      <div class="intro-box"><b>75,000+</b> active coders nationwide</div>
-      <div class="intro-box"><b>10+ Departments</b> including Web Dev, App Dev, AI/ML, UI/UX, PR & Sponsorship, and more</div>
-      <div class="intro-box"><b>Regular Events</b> like hackathons, workshops, and competitions</div>
-      <div class="intro-box"><b>Mentorship</b> & peer learning within KRMU and national chapters</div>
-    </div>
-    <p>
-      From winning hackathons to sharing internships and jobs, we are committed to helping students grow together, expand their skills, and find their people.
-      <br>Want to collaborate, compete, or simply code with friends? Join us!
-    </p>
-  </div>
+    <!-- Header Section -->
+    <header class="header-gradient text-white py-12 md:py-16 text-center">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 tracking-tight">Geek Room KRMU</h1>
+            <p class="max-w-3xl mx-auto text-lg md:text-xl text-gray-200 leading-relaxed">
+                Geek Room is a nationwide coding community with 75,000+ coders. We host hackathons, share coding opportunities, and help students find mentorship & like-minded friends.
+            </p>
+        </div>
+    </header>
 
-  <div class="section">
-    <div class="center-title">What We Do</div>
-    <div class="cards">
-      <div class="card">
-        <h3>Hackathons</h3>
-        <p>Team up and build cool projects</p>
-      </div>
-      <div class="card">
-        <h3>Workshops</h3>
-        <p>Learn new tech & coding skills</p>
-      </div>
-      <div class="card">
-        <h3>Competitions</h3>
-        <p>Sharpen your coding edge</p>
-      </div>
-      <div class="card">
-        <h3>Opportunities</h3>
-        <p>Find internships & jobs</p>
-      </div>
-    </div>
-  </div>
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- About Section -->
+        <section id="about" class="my-12 md:my-16">
+            <div class="bg-white p-6 md:p-10 rounded-2xl shadow-lg text-center">
+                <h2 class="text-2xl md:text-3xl font-bold text-geek-red mb-3">About Geek Room KRMU</h2>
+                <p class="text-gray-600 max-w-4xl mx-auto leading-relaxed mb-8">
+                    Geek Room KRMU is the official chapter of Geek Room at KR Mangalam University. We're part of India's largest student-led coding network, started by three passionate coders who wanted an open, transparent community focused on sharing ideas and helping others.
+                </p>
+                
+                <!-- Info Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 text-left">
+                    <div class="bg-gray-100 p-4 rounded-lg border border-gray-200"><b class="text-geek-red">75,000+</b> active coders nationwide</div>
+                    <div class="bg-gray-100 p-4 rounded-lg border border-gray-200"><b class="text-geek-red">10+ Departments</b> including Web Dev, App Dev, AI/ML, UI/UX, PR & Sponsorship, and more</div>
+                    <div class="bg-gray-100 p-4 rounded-lg border border-gray-200"><b class="text-geek-red">Regular Events</b> like hackathons, workshops, and competitions</div>
+                    <div class="bg-gray-100 p-4 rounded-lg border border-gray-200"><b class="text-geek-red">Mentorship</b> & peer learning within KRMU and national chapters</div>
+                </div>
 
-  <div class="join-section">
-    <div class="center-title" style="font-size:1.5rem;color:var(--red)">Join Us</div>
-    <p>Become part of our KRMU chapter community!</p>
-    <a class="btn" href="https://chat.whatsapp.com/Jtj4Txq5Bho4Ywb11gny5s" target="_blank" rel="noopener">Join Now</a>
-  </div>
+                <p class="text-gray-600 max-w-4xl mx-auto leading-relaxed mt-8">
+                    From winning hackathons to sharing internships and jobs, we are committed to helping students grow together, expand their skills, and find their people.
+                    <br class="hidden sm:block">Want to collaborate, compete, or simply code with friends? Join us!
+                </p>
+            </div>
+        </section>
 
-  <div class="section">
-    <div class="center-title">Our Team</div>
-    <div class="team-grid">
-      <!-- Chapter President -->
-      <div class="team-card">
-        <img class="team-pic" src="https://randomuser.me/api/portraits/men/1.jpg" alt="Aditey Mehra photo">
-        <h4>Aditey Mehra</h4>
-        <div class="team-role">Chapter President</div>
-        <div class="links">
-          <a href="#" title="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
-          <a href="#" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
-        </div>
-      </div>
-      <div class="team-card">
-        <img class="team-pic" src="https://randomuser.me/api/portraits/men/2.jpg" alt="Caleb Chandrasekar photo">
-        <h4>Caleb Chandrasekar</h4>
-        <div class="team-role">Web Dev</div>
-        <div class="links">
-          <a href="#" title="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
-          <a href="#" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
-        </div>
-      </div>
-      <div class="team-card">
-        <img class="team-pic" src="https://randomuser.me/api/portraits/women/3.jpg" alt="Aarushi photo">
-        <h4>Aarushi</h4>
-        <div class="team-role">Web Dev</div>
-        <div class="links">
-          <a href="#" title="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
-          <a href="#" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
-        </div>
-      </div>
-      <div class="team-card">
-        <img class="team-pic" src="https://randomuser.me/api/portraits/men/4.jpg" alt="Chirag Bhal photo">
-        <h4>Chirag Bhal</h4>
-        <div class="team-role">Emerging Tech</div>
-        <div class="links">
-          <a href="#" title="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
-          <a href="#" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
-        </div>
-      </div>
-      <div class="team-card">
-        <img class="team-pic" src="https://randomuser.me/api/portraits/men/5.jpg" alt="Suyash Sahu photo">
-        <h4>Suyash Sahu</h4>
-        <div class="team-role">DSA/Web Dev</div>
-        <div class="links">
-          <a href="#" title="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
-          <a href="#" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
-        </div>
-      </div>
-      <div class="team-card">
-        <img class="team-pic" src="https://randomuser.me/api/portraits/men/6.jpg" alt="Sarvesh Chandran photo">
-        <h4>Sarvesh Chandran</h4>
-        <div class="team-role">DSA</div>
-        <div class="links">
-          <a href="#" title="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
-          <a href="#" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
-        </div>
-      </div>
-      <div class="team-card">
-        <img class="team-pic" src="https://randomuser.me/api/portraits/men/7.jpg" alt="Dewansh Shekhar Singh photo">
-        <h4>Dewansh Shekhar Singh</h4>
-        <div class="team-role">PR/Sponsorship</div>
-        <div class="links">
-          <a href="#" title="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
-          <a href="#" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
-        </div>
-      </div>
-      <div class="team-card">
-        <img class="team-pic" src="https://randomuser.me/api/portraits/women/8.jpg" alt="Uma Mishra photo">
-        <h4>Uma Mishra</h4>
-        <div class="team-role">Publicity & Design</div>
-        <div class="links">
-          <a href="#" title="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
-          <a href="#" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
-        </div>
-      </div>
-      <div class="team-card">
-        <img class="team-pic" src="https://randomuser.me/api/portraits/women/9.jpg" alt="Kinjal photo">
-        <h4>Kinjal</h4>
-        <div class="team-role">Publicity & Design</div>
-        <div class="links">
-          <a href="#" title="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
-          <a href="#" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
-        </div>
-      </div>
-      <div class="team-card">
-        <img class="team-pic" src="https://randomuser.me/api/portraits/men/10.jpg" alt="Abhinav photo">
-        <h4>Abhinav</h4>
-        <div class="team-role">AI-ML</div>
-        <div class="links">
-          <a href="#" title="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
-          <a href="#" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
-        </div>
-      </div>
-      <div class="team-card">
-        <img class="team-pic" src="https://randomuser.me/api/portraits/women/11.jpg" alt="Tanushree photo">
-        <h4>Tanushree</h4>
-        <div class="team-role">UI/UX</div>
-        <div class="links">
-          <a href="#" title="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
-          <a href="#" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
-        </div>
-      </div>
-      <div class="team-card">
-        <img class="team-pic" src="https://randomuser.me/api/portraits/women/12.jpg" alt="Shreya photo">
-        <h4>Shreya</h4>
-        <div class="team-role">UI/UX</div>
-        <div class="links">
-          <a href="#" title="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
-          <a href="#" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
-        </div>
-      </div>
-      <div class="team-card">
-        <img class="team-pic" src="https://randomuser.me/api/portraits/women/13.jpg" alt="Sire Saini photo">
-        <h4>Sire Saini</h4>
-        <div class="team-role">App Dev</div>
-        <div class="links">
-          <a href="#" title="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
-          <a href="#" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
-        </div>
-      </div>
-    </div>
-  </div>
+        <!-- What We Do Section -->
+        <section id="what-we-do" class="my-12 md:my-20">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-geek-blue mb-10">What We Do</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white p-6 rounded-2xl shadow-lg text-center transform hover:-translate-y-2 transition-transform duration-300">
+                    <h3 class="text-xl font-bold text-geek-red mb-2">Hackathons</h3>
+                    <p class="text-gray-600">Team up and build cool projects</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-white p-6 rounded-2xl shadow-lg text-center transform hover:-translate-y-2 transition-transform duration-300">
+                    <h3 class="text-xl font-bold text-geek-red mb-2">Workshops</h3>
+                    <p class="text-gray-600">Learn new tech & coding skills</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-white p-6 rounded-2xl shadow-lg text-center transform hover:-translate-y-2 transition-transform duration-300">
+                    <h3 class="text-xl font-bold text-geek-red mb-2">Competitions</h3>
+                    <p class="text-gray-600">Sharpen your coding edge</p>
+                </div>
+                <!-- Card 4 -->
+                <div class="bg-white p-6 rounded-2xl shadow-lg text-center transform hover:-translate-y-2 transition-transform duration-300">
+                    <h3 class="text-xl font-bold text-geek-red mb-2">Opportunities</h3>
+                    <p class="text-gray-600">Find internships & jobs</p>
+                </div>
+            </div>
+        </section>
 
-  <footer style="background:var(--blue);color:#fff;text-align:center;padding:1.1rem 0 0.3rem 0;margin-top:2.2rem;font-size:1rem;">
-    © 2025 Geek Room KRMU
-  </footer>
+        <!-- Join Us Section -->
+        <section id="join" class="my-12 md:my-20 text-center bg-white py-12 px-6 rounded-2xl shadow-lg">
+            <h2 class="text-3xl font-bold text-geek-red mb-2">Join Us</h2>
+            <p class="text-gray-600 text-lg mb-6">Become part of our KRMU chapter community!</p>
+            <a href="https://chat.whatsapp.com/Jtj4Txq5Bho4Ywb11gny5s" target="_blank" rel="noopener" class="inline-block bg-geek-red text-white font-bold py-3 px-8 rounded-xl text-lg hover:bg-geek-blue transition-colors duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1">
+                Join Now
+            </a>
+        </section>
+
+        <!-- Our Team Section -->
+        <section id="team" class="my-12 md:my-20">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-geek-blue mb-12">Our Team</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 justify-items-center">
+                <!-- Team Member Cards -->
+                <div class="bg-white p-6 rounded-2xl shadow-lg text-center flex flex-col items-center transform hover:-translate-y-2 transition-transform duration-300 w-full">
+                    <img class="w-24 h-24 rounded-full object-cover border-4 border-geek-blue mb-4" src="https://placehold.co/100x100/E2E8F0/4A5568?text=AM" alt="Aditey Mehra photo">
+                    <h4 class="text-lg font-bold text-geek-blue">Aditey Mehra</h4>
+                    <p class="text-geek-red font-semibold mb-3">Chapter President</p>
+                    <div class="flex justify-center space-x-4 text-gray-500">
+                        <a href="#" class="hover:text-geek-blue transition-colors"><i class="fab fa-linkedin text-2xl"></i></a>
+                        <a href="#" class="hover:text-geek-blue transition-colors"><i class="fab fa-github text-2xl"></i></a>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-lg text-center flex flex-col items-center transform hover:-translate-y-2 transition-transform duration-300 w-full">
+                    <img class="w-24 h-24 rounded-full object-cover border-4 border-geek-blue mb-4" src="https://placehold.co/100x100/E2E8F0/4A5568?text=CC" alt="Caleb Chandrasekar photo">
+                    <h4 class="text-lg font-bold text-geek-blue">Caleb Chandrasekar</h4>
+                    <p class="text-geek-red font-semibold mb-3">Web Dev</p>
+                    <div class="flex justify-center space-x-4 text-gray-500">
+                        <a href="#" class="hover:text-geek-blue transition-colors"><i class="fab fa-linkedin text-2xl"></i></a>
+                        <a href="#" class="hover:text-geek-blue transition-colors"><i class="fab fa-github text-2xl"></i></a>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-lg text-center flex flex-col items-center transform hover:-translate-y-2 transition-transform duration-300 w-full">
+                    <img class="w-24 h-24 rounded-full object-cover border-4 border-geek-blue mb-4" src="https://placehold.co/100x100/E2E8F0/4A5568?text=A" alt="Aarushi photo">
+                    <h4 class="text-lg font-bold text-geek-blue">Aarushi</h4>
+                    <p class="text-geek-red font-semibold mb-3">Web Dev</p>
+                    <div class="flex justify-center space-x-4 text-gray-500">
+                        <a href="#" class="hover:text-geek-blue transition-colors"><i class="fab fa-linkedin text-2xl"></i></a>
+                        <a href="#" class="hover:text-geek-blue transition-colors"><i class="fab fa-github text-2xl"></i></a>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-lg text-center flex flex-col items-center transform hover:-translate-y-2 transition-transform duration-300 w-full">
+                    <img class="w-24 h-24 rounded-full object-cover border-4 border-geek-blue mb-4" src="https://placehold.co/100x100/E2E8F0/4A5568?text=CB" alt="Chirag Bhal photo">
+                    <h4 class="text-lg font-bold text-geek-blue">Chirag Bhal</h4>
+                    <p class="text-geek-red font-semibold mb-3">Emerging Tech</p>
+                    <div class="flex justify-center space-x-4 text-gray-500">
+                        <a href="#" class="hover:text-geek-blue transition-colors"><i class="fab fa-linkedin text-2xl"></i></a>
+                        <a href="#" class="hover:text-geek-blue transition-colors"><i class="fab fa-github text-2xl"></i></a>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-lg text-center flex flex-col items-center transform hover:-translate-y-2 transition-transform duration-300 w-full">
+                    <img class="w-24 h-24 rounded-full object-cover border-4 border-geek-blue mb-4" src="https://placehold.co/100x100/E2E8F0/4A5568?text=SS" alt="Suyash Sahu photo">
+                    <h4 class="text-lg font-bold text-geek-blue">Suyash Sahu</h4>
+                    <p class="text-geek-red font-semibold mb-3">DSA/Web Dev</p>
+                    <div class="flex justify-center space-x-4 text-gray-500">
+                        <a href="#" class="hover:text-geek-blue transition-colors"><i class="fab fa-linkedin text-2xl"></i></a>
+                        <a href="#" class="hover:text-geek-blue transition-colors"><i class="fab fa-github text-2xl"></i></a>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-lg text-center flex flex-col items-center transform hover:-translate-y-2 transition-transform duration-300 w-full">
+                    <img class="w-24 h-24 rounded-full object-cover border-4 border-geek-blue mb-4" src="https://placehold.co/100x100/E2E8F0/4A5568?text=SC" alt="Sarvesh Chandran photo">
+                    <h4 class="text-lg font-bold text-geek-blue">Sarvesh Chandran</h4>
+                    <p class="text-geek-red font-semibold mb-3">DSA</p>
+                    <div class="flex justify-center space-x-4 text-gray-500">
+                        <a href="#" class="hover:text-geek-blue transition-colors"><i class="fab fa-linkedin text-2xl"></i></a>
+                        <a href="#" class="hover:text-geek-blue transition-colors"><i class="fab fa-github text-2xl"></i></a>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-lg text-center flex flex-col items-center transform hover:-translate-y-2 transition-transform duration-300 w-full">
+                    <img class="w-24 h-24 rounded-full object-cover border-4 border-geek-blue mb-4" src="https://placehold.co/100x100/E2E8F0/4A5568?text=DS" alt="Dewansh Shekhar Singh photo">
+                    <h4 class="text-lg font-bold text-geek-blue">Dewansh S. Singh</h4>
+                    <p class="text-geek-red font-semibold mb-3">PR/Sponsorship</p>
+                    <div class="flex justify-center space-x-4 text-gray-500">
+                        <a href="#" class="hover:text-geek-blue transition-colors"><i class="fab fa-linkedin text-2xl"></i></a>
+                        <a href="#" class="hover:text-geek-blue transition-colors"><i class="fab fa-github text-2xl"></i></a>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-lg text-center flex flex-col items-center transform hover:-translate-y-2 transition-transform duration-300 w-full">
+                    <img class="w-24 h-24 rounded-full object-cover border-4 border-geek-blue mb-4" src="https://placehold.co/100x100/E2E8F0/4A5568?text=UM" alt="Uma Mishra photo">
+                    <h4 class="text-lg font-bold text-geek-blue">Uma Mishra</h4>
+                    <p class="text-geek-red font-semibold mb-3">Publicity & Design</p>
+                    <div class="flex justify-center space-x-4 text-gray-500">
+                        <a href="#" class="hover:text-geek-blue transition-colors"><i class="fab fa-linkedin text-2xl"></i></a>
+                        <a href="#" class="hover:text-geek-blue transition-colors"><i class="fab fa-github text-2xl"></i></a>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-lg text-center flex flex-col items-center transform hover:-translate-y-2 transition-transform duration-300 w-full">
+                    <img class="w-24 h-24 rounded-full object-cover border-4 border-geek-blue mb-4" src="https://placehold.co/100x100/E2E8F0/4A5568?text=K" alt="Kinjal photo">
+                    <h4 class="text-lg font-bold text-geek-blue">Kinjal</h4>
+                    <p class="text-geek-red font-semibold mb-3">Publicity & Design</p>
+                    <div class="flex justify-center space-x-4 text-gray-500">
+                        <a href="#" class="hover:text-geek-blue transition-colors"><i class="fab fa-linkedin text-2xl"></i></a>
+                        <a href="#" class="hover:text-geek-blue transition-colors"><i class="fab fa-github text-2xl"></i></a>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-lg text-center flex flex-col items-center transform hover:-translate-y-2 transition-transform duration-300 w-full">
+                    <img class="w-24 h-24 rounded-full object-cover border-4 border-geek-blue mb-4" src="https://placehold.co/100x100/E2E8F0/4A5568?text=A" alt="Abhinav photo">
+                    <h4 class="text-lg font-bold text-geek-blue">Abhinav</h4>
+                    <p class="text-geek-red font-semibold mb-3">AI-ML</p>
+                    <div class="flex justify-center space-x-4 text-gray-500">
+                        <a href="#" class="hover:text-geek-blue transition-colors"><i class="fab fa-linkedin text-2xl"></i></a>
+                        <a href="#" class="hover:text-geek-blue transition-colors"><i class="fab fa-github text-2xl"></i></a>
+                    </div>
+                </div>
+                 <div class="bg-white p-6 rounded-2xl shadow-lg text-center flex flex-col items-center transform hover:-translate-y-2 transition-transform duration-300 w-full">
+                    <img class="w-24 h-24 rounded-full object-cover border-4 border-geek-blue mb-4" src="https://placehold.co/100x100/E2E8F0/4A5568?text=T" alt="Tanushree photo">
+                    <h4 class="text-lg font-bold text-geek-blue">Tanushree</h4>
+                    <p class="text-geek-red font-semibold mb-3">UI/UX</p>
+                    <div class="flex justify-center space-x-4 text-gray-500">
+                        <a href="#" class="hover:text-geek-blue transition-colors"><i class="fab fa-linkedin text-2xl"></i></a>
+                        <a href="#" class="hover:text-geek-blue transition-colors"><i class="fab fa-github text-2xl"></i></a>
+                    </div>
+                </div>
+                 <div class="bg-white p-6 rounded-2xl shadow-lg text-center flex flex-col items-center transform hover:-translate-y-2 transition-transform duration-300 w-full">
+                    <img class="w-24 h-24 rounded-full object-cover border-4 border-geek-blue mb-4" src="https://placehold.co/100x100/E2E8F0/4A5568?text=S" alt="Shreya photo">
+                    <h4 class="text-lg font-bold text-geek-blue">Shreya</h4>
+                    <p class="text-geek-red font-semibold mb-3">UI/UX</p>
+                    <div class="flex justify-center space-x-4 text-gray-500">
+                        <a href="#" class="hover:text-geek-blue transition-colors"><i class="fab fa-linkedin text-2xl"></i></a>
+                        <a href="#" class="hover:text-geek-blue transition-colors"><i class="fab fa-github text-2xl"></i></a>
+                    </div>
+                </div>
+                 <div class="bg-white p-6 rounded-2xl shadow-lg text-center flex flex-col items-center transform hover:-translate-y-2 transition-transform duration-300 w-full">
+                    <img class="w-24 h-24 rounded-full object-cover border-4 border-geek-blue mb-4" src="https://placehold.co/100x100/E2E8F0/4A5568?text=SS" alt="Sire Saini photo">
+                    <h4 class="text-lg font-bold text-geek-blue">Sire Saini</h4>
+                    <p class="text-geek-red font-semibold mb-3">App Dev</p>
+                    <div class="flex justify-center space-x-4 text-gray-500">
+                        <a href="#" class="hover:text-geek-blue transition-colors"><i class="fab fa-linkedin text-2xl"></i></a>
+                        <a href="#" class="hover:text-geek-blue transition-colors"><i class="fab fa-github text-2xl"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-geek-blue text-white text-center py-6 mt-12">
+        <p>&copy; 2025 Geek Room KRMU</p>
+    </footer>
+
 </body>
 </html>
